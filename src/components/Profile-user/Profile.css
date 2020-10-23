@@ -1,0 +1,140 @@
+body{
+  background-color: #232b2b;
+/*  background-image: url('/images/1.webp');*/
+}
+
+.nav2{
+  background-color:black;
+  width:1000px;
+  color: black;
+}
+
+.card {
+  border-radius: 25px;
+  position: relative;
+  padding: 25px 15px;
+/*  background-color: #81ecec;*/
+  background-color: #505050;
+
+  box-shadow: 0 2px 5px #ccc;
+  text-align: left;
+
+
+}
+.h{
+  height: 250px;
+    width:1200px;
+    margin: 0 auto;
+}
+
+.top {
+  border-radius: 25px 25px 0 0;
+  height: 100px;
+  width: 100%;
+  /*background-color: #00cec9;*/
+  background-color: #232b2b;
+  top: 0;
+  left: 0;
+  position: absolute;
+
+  display: flex;
+  background-image: url('/images/network.jpg');
+}
+
+
+.name {
+  font-size: 2em;
+  /*color: #2d3436;*/
+  color:white;
+  display: flex;
+  flex: 1;
+/*  margin: 10% 20px 0;*/
+  margin: 30px ;
+  text-align: left;
+  position: relative;
+}
+
+.card img {
+  margin: 30px 20px 0 0;
+  float: right;
+  text-align: left;
+}
+
+.circle-img {
+  border-radius: 50%;
+  border: 7px solid #fff;
+  width: 220px;
+  height: 220px;
+  float: right;
+}
+
+.bottom {
+  margin-top: 120px;
+
+}
+
+.info {
+  margin: 20px 0;
+  color: WHITE;
+}
+
+.club{
+  width:250px;
+  height:500px;
+  position: relative;
+  text-align: left;
+  margin:30px 10px 80px 150px;
+  float: right;
+}
+
+
+.box{
+  margin:0 auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.boxm{
+  border-radius: 50%;
+  border: 7px solid #fff;
+  width: 120px;
+  height: 120px;
+  float: left;
+  margin-left: 400px;
+
+}
+
+.con{
+  border-radius: 25px;
+  position: relative;
+  padding: 25px 15px;
+/*  background-color: #81ecec;*/
+  background-color: #141414;
+
+  box-shadow: 0 2px 5px #ccc;
+  text-align: left;
+  height: 100px;
+    width:700px;
+    margin:0 auto;
+}
+h3{
+  color:#6B8E23;
+}
+.content{
+  color:white;
+}
+
+.con1{
+  border-radius: 25px;
+  position: relative;
+  padding: 25px 15px;
+/*  background-color: #81ecec;*/
+  background-color: #323232;
+
+  box-shadow: 0 2px 5px #ccc;
+  text-align: left;
+  height: 100px;
+    width:700px;
+    margin:0 auto;
+    
+}

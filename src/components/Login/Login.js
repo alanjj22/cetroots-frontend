@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form } from 'react-bootstrap'
-import {logins} from './../../Utils/index'
+import {loginu} from '../../utils/Token'
 import './Login.css'
 import Axios from 'axios';
 
@@ -28,7 +28,7 @@ class Login extends Component {
                 password: this.state.password
             }).then(res => {
                 console.log(res.data);
-                logins(res.data.token);
+                loginu(res.data.token);
                 this.props.history.push('/myAccount');
             }).catch(err => {
                 console.log(this.props.history)

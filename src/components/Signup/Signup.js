@@ -1,77 +1,74 @@
-import React from 'react'
-import { Form,Col, Dropdown } from 'react-bootstrap'
+import React, { Component } from 'react'
+import { Form } from 'react-bootstrap'
 import './Signup.css'
-import Datefrom from './Datefrom'
+import Axios from 'axios'
 
-const Signup = () => {
-  return (
-    <div className="container">
-      <div className="register-form-container">
-        <div className="form-header">
-          <h1>Signup</h1>
-          <div className="line"></div>
-        </div>
-        <div className="register-form">
-          <Form className="text-center">
-            <Form.Row>
-              <Form.Group as={Col} >
-                <Form.Control type="text" placeholder="First name" />
-              </Form.Group>
+class Signup extends Component {
+  state = {
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    error: ''
+  }
 
-              <Form.Group as={Col} >
-                <Form.Control type="text" placeholder="Last name" />
-              </Form.Group>
-            </Form.Row>
+  handleChange = ({target}) => {
+    this.setState({[target.name]:target.value,
+    error: ''});
+}
 
-            <Form.Group controlId="formGridAddress2">
-              <Form.Control type="email" placeholder="Email" />
-            </Form.Group>
+  handleRegister = e => {
+    e.preventDefault();
+    if (this.state.name === '' ||this.state.username === '' || this.state.password === '' || this.state.email === '') {
+      this.setState({ error: 'All fields are mandatory' });
+    }
+    else if(this.state.password != this.state.confirmPassword){
+      this.setState({ error: 'Passwords do not match' });
+    }
+    else{
+      Axios.post('https://cetroots.herokuapp.com/api/profile/',{
+                password: this.state.password,
+                email: this.state.email,
+                image:null,
+                name:this.state.name
+            }).then(res => {
+                this.setState({ error: '' });
+                this.props.history.push('/Login');
+            }).catch(err => {
+                console.log(err.response);
+                if(err.response.data.username){
+                  this.setState({
+                      error: 'Username already exists', 
+                      password: ''
+                  })
+              }
+            });
+    }
+  }
 
-            <Form.Group >
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-
-            <Form.Group >
-              <Form.Control type="password" placeholder="Confirm password" />
-            </Form.Group>
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridState" className="select-department">
-                <Form.Control as="select" defaultValue="Select department">
-                  <option disabled="true">Select department</option>
-                  <option>Computer Science And Engineering</option>
-                  <option>Civil Engineering</option>
-                  <option>Electrical Engineering</option>
-                  <option>Mechanical Engineering</option>
-                  <option>Electronics And Communication Engineering</option>
-                  <option>Architecture</option>
-                </Form.Control>
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group as={Col} className="text-left">
-                <Form.Label className="p-3">Starting Year</Form.Label>
-                <Datefrom className="from-year"/>
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Label className="p-3">Starting Year</Form.Label>
-                <Datefrom></Datefrom>
-              </Form.Group>
-            </Form.Row>
-            <input type="submit" className="register-button" value="Register"></input>
-          </Form>
+  render() {
+    return (
+      <div className="register-container">
+        <div className="register-form-container">
+          <div className="register-logo-container">
+            <img src="images/logo.jpeg" alt="logo" className="register-logo"></img>
           </div>
-        </div>
-        <div className="register-logo-container">
-          <img src="images/logo.png" alt="logo" className="register-logo"></img>
-        </div>
-    </div>
-  )
+            <Form>
+              <div className="register-form">
+              <input className="register-input" type="text" id="name" name="name" placeholder="name" value={this.state.name} onChange={this.handleChange} />
+                <input className="register-input" type="text" id="username" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
+                <input  className="register-input" type="email" id="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
+                <input className="register-input" type="password" name="password" placeholder="Password" id="password" value={this.state.password} onChange={this.handleChange}/>
+                <input className="register-input" type="password" name="confirmPassword" placeholder="Confirm Password" id="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange}/>
+                <span className="register-error" >{this.state.error}</span>
+                <input  className="register-button"  type="submit" value="Register" onClick={this.handleRegister} />
+              </div>
+            </Form>
+        </div> 
+      </div>
+    )
+  }
 }
 
 export default Signup
-
-
-          
-        
-
-

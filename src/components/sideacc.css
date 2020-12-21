@@ -1,0 +1,52 @@
+.name1 {
+  font-size: 2em;
+  /*color: #2d3436;*/
+  color:white;
+  display: flex;
+  flex: 1;
+/*  margin: 10% 20px 0;*/
+  margin: 20px 0 7px;
+  text-align: center;
+  position: relative;
+
+}
+
+.box1 {
+  border-radius: 25px;
+  position: relative;
+  padding: 70px 25px;
+/*  background-color: #81ecec;*/
+  background-color: #141414;
+
+  box-shadow: 0 2px 5px #ccc;
+
+  margin-top: 20px;
+  margin-left: 30px;
+  width:250px;
+  height:500px;
+  position: fixed;
+
+
+
+
+}
+
+.image{
+  border-radius: 50%;
+  border: 7px solid #fff;
+  width:160px;
+  height:160px;
+  margin:20px 0;
+
+
+}
+
+.info1 {
+  margin: 20px 0 7px;
+  color: WHITE;
+  text-align: left;
+
+}
+.top1{
+  text-align: center;
+}

@@ -7,6 +7,8 @@ import Signup from './components/Signup/Signup.js';
 import Profile from './components/Profile-user/Profile.js';
 import Account from './components/Account/Account.js';
 import Navbar from './components/Navbar';
+import Footer from "./components/Footer/footer.js"
+import Feed from "./components/feed.js";
 
 
 function App() {
@@ -20,8 +22,11 @@ function App() {
         <Route path='/SignUp' component={Signup} />
         <Route path='/myAccount' component={Account} />
         <Route path='/profile-student' component={Profile}/>
+        <Route path='/feed' component={Feed}/>
       </Switch>
+      <Footer/>
     </Router>
+    
     </>
   );
 }

@@ -1,0 +1,64 @@
+.boxp{
+  border-radius: 25px;
+
+  padding: 25px 15px;
+/*  background-color: #81ecec;*/
+  background-color: #141414;
+
+  box-shadow: 0 2px 5px #ccc;
+
+  height: 200px;
+    width:700px;
+    margin:0 auto;
+  text-align: center;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.icon2{
+padding: 10px ;
+color: white;
+text-align: left;
+margin-left: 10px;
+float: left;
+
+
+font-size: 30px;
+}
+
+.po{
+  color: white;
+  margin-left:20px;
+  float: left;
+  margin-top: 8px;
+
+}
+/* .bott {
+  display:none;
+} */
+.icon3{
+  padding: 10px ;
+  color: white;
+  padding-top:60px;
+padding-right: 40px;
+position: relative;
+
+
+
+  font-size: 30px;
+}
+
+.bott{
+  text-align: left;
+  float: left;
+  margin-right: 400px;
+}
+.post{
+  float: right;
+  margin-top:120px;
+  display: inline-block;
+  position: absolute;
+}
+button{
+  background-color: #6B8E23;
+}

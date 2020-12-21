@@ -1,36 +1,72 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Form } from 'react-bootstrap'
+import {logins} from './../../Utils/index'
 import './Login.css'
+import Axios from 'axios';
 
-const Login = () => {
-  return (
-    <div className="container">
-      <div className="logo-container">
-          <img src="images/logo.png" alt="logo" className="login-logo"></img>
-      </div>
-      <div className="form-container">
-        <div className="form-header">
-          <h1>Login</h1>
-          <div className="line"></div>
-        </div>
-        <div className="login-form">
-          <Form className="text-center">
-            <Form.Group controlId="formBasicEmail">
-              <Form.Control type="email" placeholder="Enter email" required="true" />
-            </Form.Group>
+class Login extends Component {
+        state = {
+            username: '',
+            password: '',
+            error: ''
+        }
+    
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Control type="password" placeholder="Password" required="true" />
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox" className="text-left">
-              <Form.Check type="checkbox" label="Remember me" />
-            </Form.Group>
-            <input type="submit" className="login-button" value="Login"></input>
-          </Form>
-        </div>
-        </div>
-    </div>
-  )
+    handleChange = ({target}) => {
+        this.setState({[target.name]:target.value,
+        error: ''});
+    }
+
+    handleLogin = e => {
+        e.preventDefault();
+        if (this.state.username === '' || this.state.password === '') {
+            this.setState({ error: 'Enter username and Password' });
+          }
+        else{
+            Axios.post('https://cetroots.herokuapp.com/api/login-token/',{
+                email: this.state.username,
+                password: this.state.password
+            }).then(res => {
+                console.log(res.data);
+                logins(res.data.token);
+                this.props.history.push('/myAccount');
+            }).catch(err => {
+                console.log(this.props.history)
+                console.log(err.response);
+                console.log(err.response.data.username);
+                console.log(err.response.data.non_field_errors);
+                if(err.response.data.non_field_errors){
+                    this.setState({
+                        error: 'Invalid Username or Password', 
+                        password: ''
+                    })
+                }
+              });
+        }
+    }
+
+    render() {
+        return (
+            <div className="login-container">
+                <div className="login-form-container">
+                    <div className="login-logo-container">
+                        <img src="images/logo.jpeg" alt="logo" className="login-logo"></img>
+                    </div>
+                    
+                    <Form>
+                        <div className="login-form">
+                            <input className="login-input" type="text" name="username" placeholder="Username" id="username" value={this.state.username} onChange={this.handleChange}/>
+                            <input className="login-input" type="password" name="password" placeholder="Password" id="password" value={this.state.password} onChange={this.handleChange}/>
+                            
+                            <span className="login-error">{this.state.error}</span>
+                            <input className="login-button" type="submit" value="Login" onClick={this.handleLogin} />
+                        </div>
+                    </Form>
+                    
+                </div>
+            </div>
+        )
+    }
 }
 
-export default Login
+export default Login;

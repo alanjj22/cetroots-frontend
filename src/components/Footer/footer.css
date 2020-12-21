@@ -1,0 +1,23 @@
+.footer{
+  background-color: black;
+  height:250px;
+  display:flex;
+  bottom: 0;
+  margin-top:300px;
+
+}
+
+.footer-design{
+  text-align: center;
+  color: white;
+  padding: 5% 42%;
+
+
+}
+
+.ico{
+margin:15px 30px 15px;
+font-size: 30px;
+outline-color: #990000;
+text-shadow: #990000;
+}

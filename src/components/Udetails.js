@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Udetails.css'
 
 function Udetails() {
     const [data, setData] = useState({
@@ -44,7 +45,7 @@ function Udetails() {
                 placeholder="9876543210"
                 /></div>
                 <div>
-                <label htmlFor="status">: </label>
+                <label htmlFor="status">Status: </label>
                 <input
                 id="status"
                 name="status"

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Vdetails.css'
 
 function Vdtails() {
     return (
